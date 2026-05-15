@@ -82,7 +82,11 @@ export function SiteLayout() {
           <div className="flex items-center gap-4">
             <Link to="/planets" className="hover:text-foreground transition">Planets</Link>
             <Link to="/dogs" className="hover:text-foreground transition">Dogs</Link>
-            <a href="https://t.me/liskeght" target="_blank" rel="noopener" className="hover:text-foreground transition">Telegram</a>
+            <SuggestionDialog
+              trigger={(open) => (
+                <button onClick={open} className="hover:text-foreground transition">Contact</button>
+              )}
+            />
           </div>
           <div className="font-mono">© {new Date().getFullYear()} · Liskeght Planet</div>
         </div>
