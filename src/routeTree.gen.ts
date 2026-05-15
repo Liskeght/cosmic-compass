@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PlanetsRouteImport } from './routes/planets'
+import { Route as DogsRouteImport } from './routes/dogs'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PlanetsRoute = PlanetsRouteImport.update({
+  id: '/planets',
+  path: '/planets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DogsRoute = DogsRouteImport.update({
+  id: '/dogs',
+  path: '/dogs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/dogs': typeof DogsRoute
+  '/planets': typeof PlanetsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/dogs': typeof DogsRoute
+  '/planets': typeof PlanetsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/dogs': typeof DogsRoute
+  '/planets': typeof PlanetsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/about' | '/dogs' | '/planets'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/about' | '/dogs' | '/planets'
+  id: '__root__' | '/' | '/about' | '/dogs' | '/planets'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  DogsRoute: typeof DogsRoute
+  PlanetsRoute: typeof PlanetsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/planets': {
+      id: '/planets'
+      path: '/planets'
+      fullPath: '/planets'
+      preLoaderRoute: typeof PlanetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dogs': {
+      id: '/dogs'
+      path: '/dogs'
+      fullPath: '/dogs'
+      preLoaderRoute: typeof DogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +104,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  DogsRoute: DogsRoute,
+  PlanetsRoute: PlanetsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
