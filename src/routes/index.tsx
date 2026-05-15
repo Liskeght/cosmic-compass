@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles, Telescope, Send } from "lucide-react";
 import { planets } from "@/data/planets";
 import { PlanetOrb } from "@/components/PlanetOrb";
+import { SuggestionDialog } from "@/components/SuggestionDialog";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -106,14 +107,16 @@ function HomePage() {
             <h2 className="mt-2 font-display text-3xl sm:text-4xl">Есть идея? <span className="gradient-text">Напиши в Telegram.</span></h2>
             <p className="mt-2 max-w-xl text-sm text-muted-foreground">Поделись предложением, фидбеком или вопросом — и стань частью миссии Liskeght.</p>
           </div>
-          <a
-            href="https://t.me/liskeght"
-            target="_blank"
-            rel="noopener"
-            className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-primary to-accent px-7 py-4 text-sm font-medium uppercase tracking-widest text-primary-foreground transition hover:scale-105 animate-pulse-glow"
-          >
-            <Send className="h-4 w-4" /> Send Suggestion
-          </a>
+          <SuggestionDialog
+            trigger={(open) => (
+              <button
+                onClick={open}
+                className="group inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-primary to-accent px-7 py-4 text-sm font-medium uppercase tracking-widest text-primary-foreground transition hover:scale-105 animate-pulse-glow"
+              >
+                <Send className="h-4 w-4" /> Send Suggestion
+              </button>
+            )}
+          />
         </div>
         <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full opacity-40 blur-3xl"
              style={{ background: "radial-gradient(circle, oklch(0.6 0.25 230), transparent 70%)" }} />

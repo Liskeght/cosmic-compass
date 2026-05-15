@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Send, Rocket, Globe2, Cpu } from "lucide-react";
+import { SuggestionDialog } from "@/components/SuggestionDialog";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -43,10 +44,16 @@ function AboutPage() {
             <h2 className="font-display text-2xl sm:text-3xl">Связаться с автором</h2>
             <p className="mt-2 text-sm text-muted-foreground">Author: Liskeght · Telegram для идей и предложений.</p>
           </div>
-          <a href="https://t.me/liskeght" target="_blank" rel="noopener"
-             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm uppercase tracking-widest text-primary-foreground hover:scale-105 transition animate-pulse-glow">
-            <Send className="h-4 w-4" /> Send Suggestion
-          </a>
+          <SuggestionDialog
+            trigger={(open) => (
+              <button
+                onClick={open}
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-6 py-3 text-sm uppercase tracking-widest text-primary-foreground hover:scale-105 transition animate-pulse-glow"
+              >
+                <Send className="h-4 w-4" /> Send Suggestion
+              </button>
+            )}
+          />
         </div>
       </section>
     </div>
