@@ -9,7 +9,6 @@ import {
 } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
 import { SiteLayout } from "@/components/SiteLayout";
-import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -46,8 +45,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Liskeght Planet — Interactive Space Panel" },
       { name: "description", content: "Интерактивная космическая панель: изучай планеты Солнечной системы и научные факты в стиле NASA." },
       { property: "og:title", content: "Liskeght Planet — Interactive Space Panel" },
-      { property: "og:description", content: "Интерактивный научно-популярный космический центр." },
+      { property: "og:description", content: "Интерактивная космическая панель: изучай планеты Солнечной системы и научные факты в стиле NASA." },
       { property: "og:type", content: "website" },
+      { name: "twitter:title", content: "Liskeght Planet — Interactive Space Panel" },
+      { name: "twitter:description", content: "Интерактивная космическая панель: изучай планеты Солнечной системы и научные факты в стиле NASA." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c976587a-bdbe-44e4-8b59-a8bff9999e38/id-preview-5c8f12c6--0782620f-0ed0-43e0-b29d-208f3a0a5ef3.lovable.app-1778877848516.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c976587a-bdbe-44e4-8b59-a8bff9999e38/id-preview-5c8f12c6--0782620f-0ed0-43e0-b29d-208f3a0a5ef3.lovable.app-1778877848516.png" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -76,7 +80,6 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SiteLayout />
-      <Toaster theme="dark" position="top-center" />
     </QueryClientProvider>
   );
 }
