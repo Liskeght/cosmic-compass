@@ -124,7 +124,27 @@
     background: linear-gradient(90deg, transparent, oklch(0.7 0.18 260 / 0.6), transparent);
     height: 1px;
   }
+  .field {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid oklch(0.7 0.15 270 / 0.2);
+    background: oklch(0.15 0.04 270 / 0.5);
+    padding: 0.65rem 0.9rem;
+    font-size: 0.875rem;
+    color: var(--foreground);
+    transition: border-color .2s, box-shadow .2s, background .2s;
+    outline: none;
+  }
+  .field::placeholder { color: oklch(0.65 0.04 270 / 0.6); }
+  .field:focus {
+    border-color: oklch(0.75 0.2 280 / 0.6);
+    background: oklch(0.18 0.05 270 / 0.7);
+    box-shadow: 0 0 0 3px oklch(0.65 0.22 280 / 0.18);
+  }
+  .animate-fade-in { animation: fade-in 0.25s ease-out both; }
 }
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 
 /* Starfield */
 @keyframes drift {
