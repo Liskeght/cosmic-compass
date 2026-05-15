@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from "@tanstack/react-router";
 import { Starfield } from "./Starfield";
 import { Send, Orbit } from "lucide-react";
+import { SuggestionDialog } from "./SuggestionDialog";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -43,15 +44,17 @@ export function SiteLayout() {
               );
             })}
           </nav>
-          <a
-            href="https://t.me/liskeght"
-            target="_blank"
-            rel="noopener"
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-4 py-2 text-xs font-medium uppercase tracking-widest text-primary-foreground transition hover:scale-105 animate-pulse-glow"
-          >
-            <Send className="h-3.5 w-3.5" />
-            Suggest
-          </a>
+          <SuggestionDialog
+            trigger={(open) => (
+              <button
+                onClick={open}
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary to-accent px-4 py-2 text-xs font-medium uppercase tracking-widest text-primary-foreground transition hover:scale-105 animate-pulse-glow"
+              >
+                <Send className="h-3.5 w-3.5" />
+                Suggest
+              </button>
+            )}
+          />
         </div>
         <div className="mx-auto mt-2 max-w-7xl flex md:hidden gap-1 overflow-x-auto px-2 pb-1">
           {nav.map((n) => {
